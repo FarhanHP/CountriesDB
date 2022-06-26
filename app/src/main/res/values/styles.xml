@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="CountriesDBTextview" parent="android:Widget.TextView">
+    <item name="android:fontFamily">@font/poppins_medium</item>
+  </style>
+
+  <style name="CountriesDBButton" parent="android:Widget.Holo.Button">
+    <item name="android:fontFamily">@font/poppins_medium</item>
+  </style>
+</resources>

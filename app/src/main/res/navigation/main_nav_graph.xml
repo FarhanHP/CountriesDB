@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/main_nav_graph"
+  app:startDestination="@id/splashScreenFragment">
+
+  <fragment
+    android:id="@+id/splashScreenFragment"
+    android:name="com.farhanhp.countriesdb.screens.splash.SplashScreenFragment"
+    android:label="fragment_splash_screen"
+    tools:layout="@layout/fragment_splash_screen" >
+    <action
+      android:id="@+id/action_splashScreenFragment_to_mainScreenFragment"
+      app:destination="@id/mainScreenFragment"
+      app:popUpTo="@id/splashScreenFragment"
+      app:popUpToInclusive="true" />
+  </fragment>
+  <fragment
+    android:id="@+id/mainScreenFragment"
+    android:name="com.farhanhp.countriesdb.screens.main.MainScreenFragment"
+    android:label="fragment_main_screen"
+    tools:layout="@layout/fragment_main_screen" >
+    <action
+      android:id="@+id/action_mainScreenFragment_to_aboutScreenFragment"
+      app:destination="@id/aboutScreenFragment" />
+    <action
+      android:id="@+id/action_mainScreenFragment_to_detailCountryScreenFragment"
+      app:destination="@id/detailCountryScreenFragment" />
+  </fragment>
+  <fragment
+    android:id="@+id/aboutScreenFragment"
+    android:name="com.farhanhp.countriesdb.screens.about.AboutScreenFragment"
+    android:label="fragment_about_screen"
+    tools:layout="@layout/fragment_about_screen" />
+  <fragment
+    android:id="@+id/detailCountryScreenFragment"
+    android:name="com.farhanhp.countriesdb.screens.detail_country.DetailCountryScreenFragment"
+    android:label="fragment_detail_country_screen"
+    tools:layout="@layout/fragment_detail_country_screen" />
+</navigation>

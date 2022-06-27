@@ -9,8 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.farhanhp.countriesdb.MainActivity
 import com.farhanhp.countriesdb.R
+import kotlinx.coroutines.delay
 
 
 @SuppressLint("CustomSplashScreen")
@@ -21,20 +24,21 @@ class SplashScreenFragment : Fragment() {
   ): View? {
     val view = inflater.inflate(R.layout.fragment_splash_screen, container, false)
 
-    Handler(Looper.getMainLooper()).postDelayed({
+    lifecycleScope.launchWhenResumed {
+      delay(2000)
       findNavController().navigate(R.id.action_splashScreenFragment_to_mainScreenFragment)
-    }, 2000)
+    }
 
     return view
   }
 
   override fun onResume() {
     super.onResume()
-    (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+    (requireActivity() as MainActivity).getAppBar().visibility = View.GONE
   }
 
   override fun onStop() {
     super.onStop()
-    (requireActivity() as AppCompatActivity).supportActionBar?.show()
+    (requireActivity() as MainActivity).getAppBar().visibility = View.VISIBLE
   }
 }

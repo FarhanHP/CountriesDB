@@ -1,23 +1,36 @@
 package com.farhanhp.countriesdb.screens.main
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.farhanhp.countriesdb.data.Country
-import com.farhanhp.countriesdb.databinding.ViewHolderCountryBinding
+import com.farhanhp.countriesdb.screens.main.views.contry_card.CountryCardView
 
 class CountriesAdapter(
-  private val items: List<CountriesAdapterItem>
+  _items: List<CountriesAdapterItem>,
+  var favoriteButtonClickCallback: (countryId: Int) -> Unit,
+  var onItemCLickCallback: (country: Country) -> Unit
 ): RecyclerView.Adapter<CountriesAdapter.ViewHolder>() {
+  var items: List<CountriesAdapterItem> = _items
+    set(value) {
+      field = value
+      notifyDataSetChanged()
+    }
+
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-    ViewHolder(ViewHolderCountryBinding.inflate(LayoutInflater.from(parent.context)))
+    ViewHolder(CountryCardView(parent.context))
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-    items[position].let {
-      holder.viewBinding.apply {
-        Glide.with(root).load(it.country.flagImg).centerCrop().into(countryFlagImg)
-        countryName.text = it.country.name
+    items[position].let { item ->
+      holder.view.apply {
+        setImageUrl(item.country.flagImg)
+        setCountryName(item.country.name)
+        setFavoriteButton(item.isFavorite)
+        setFavoriteButtonOnClickListener {
+          favoriteButtonClickCallback(item.country.id)
+        }
+        setOnClickListener {
+          onItemCLickCallback(item.country)
+        }
       }
     }
   }
@@ -25,6 +38,6 @@ class CountriesAdapter(
   override fun getItemCount() = items.size
 
   inner class ViewHolder(
-    val viewBinding: ViewHolderCountryBinding
-  ): RecyclerView.ViewHolder(viewBinding.root)
+    val view: CountryCardView
+  ): RecyclerView.ViewHolder(view)
 }

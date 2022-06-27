@@ -19,23 +19,31 @@
   <fragment
     android:id="@+id/mainScreenFragment"
     android:name="com.farhanhp.countriesdb.screens.main.MainScreenFragment"
-    android:label="fragment_main_screen"
+    android:label="@string/app_name"
     tools:layout="@layout/fragment_main_screen" >
     <action
       android:id="@+id/action_mainScreenFragment_to_aboutScreenFragment"
-      app:destination="@id/aboutScreenFragment" />
+      app:destination="@id/aboutScreenFragment"
+      app:enterAnim="@android:anim/slide_in_left"
+      app:exitAnim="@android:anim/slide_out_right"
+      app:popEnterAnim="@android:anim/slide_in_left"
+      app:popExitAnim="@android:anim/slide_out_right" />
     <action
       android:id="@+id/action_mainScreenFragment_to_detailCountryScreenFragment"
-      app:destination="@id/detailCountryScreenFragment" />
+      app:destination="@id/detailCountryScreenFragment"
+      app:enterAnim="@android:anim/slide_in_left"
+      app:exitAnim="@android:anim/slide_out_right"
+      app:popEnterAnim="@android:anim/slide_in_left"
+      app:popExitAnim="@android:anim/slide_out_right" />
   </fragment>
   <fragment
     android:id="@+id/aboutScreenFragment"
     android:name="com.farhanhp.countriesdb.screens.about.AboutScreenFragment"
-    android:label="fragment_about_screen"
+    android:label="About"
     tools:layout="@layout/fragment_about_screen" />
   <fragment
     android:id="@+id/detailCountryScreenFragment"
     android:name="com.farhanhp.countriesdb.screens.detail_country.DetailCountryScreenFragment"
-    android:label="fragment_detail_country_screen"
+    android:label="Detail Country"
     tools:layout="@layout/fragment_detail_country_screen" />
 </navigation>

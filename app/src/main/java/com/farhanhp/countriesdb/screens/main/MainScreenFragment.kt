@@ -1,20 +1,17 @@
 package com.farhanhp.countriesdb.screens.main
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.farhanhp.countriesdb.MainActivityViewModel
-import com.farhanhp.countriesdb.R
 import com.farhanhp.countriesdb.data.Country
-import com.farhanhp.countriesdb.data.countries
 import com.farhanhp.countriesdb.databinding.FragmentMainScreenBinding
+import com.farhanhp.countriesdb.screens.MainActivityWithAboutFragment
 
-class MainScreenFragment : Fragment() {
-  private val activityViewModel: MainActivityViewModel by activityViewModels()
+class MainScreenFragment : MainActivityWithAboutFragment() {
+  private val viewModel: MainScreenFragmentViewModel by viewModels()
   private lateinit var binding: FragmentMainScreenBinding
 
   override fun onCreateView(
@@ -23,7 +20,7 @@ class MainScreenFragment : Fragment() {
   ): View {
     binding = FragmentMainScreenBinding.inflate(layoutInflater)
     binding.countriesRv.adapter = CountriesAdapter(
-      countries.map { CountriesAdapterItem(it, false) },
+      viewModel.countries.map { CountriesAdapterItem(it, false) },
       this::onFavoriteButtonClick,
       this::onAdapterItemClick
     )
@@ -37,6 +34,6 @@ class MainScreenFragment : Fragment() {
 
   private fun onAdapterItemClick(country: Country) {
     activityViewModel.selectedCountry = country
-    findNavController().navigate(R.id.action_mainScreenFragment_to_detailCountryScreenFragment)
+    findNavController().navigate(MainScreenFragmentDirections.actionMainScreenFragmentToDetailCountryScreenFragment())
   }
 }

@@ -4,4 +4,8 @@
   <string name="country_flag">Country flag</string>
   <string name="add_favorite">Add Favorite</string>
   <string name="remove_favorite">Remove Favorite</string>
+  <string name="about_screen_button">About Screen Button</string>
+  <string name="farhan_herdian_pradana">Farhan Herdian Pradana</string>
+  <string name="farhan_herdia123_gmail_com">farhan.herdia123@gmail.com</string>
+  <string name="share_country">Share Country</string>
 </resources>

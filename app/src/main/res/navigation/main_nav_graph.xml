@@ -22,13 +22,6 @@
     android:label="@string/app_name"
     tools:layout="@layout/fragment_main_screen" >
     <action
-      android:id="@+id/action_mainScreenFragment_to_aboutScreenFragment"
-      app:destination="@id/aboutScreenFragment"
-      app:enterAnim="@android:anim/slide_in_left"
-      app:exitAnim="@android:anim/slide_out_right"
-      app:popEnterAnim="@android:anim/slide_in_left"
-      app:popExitAnim="@android:anim/slide_out_right" />
-    <action
       android:id="@+id/action_mainScreenFragment_to_detailCountryScreenFragment"
       app:destination="@id/detailCountryScreenFragment"
       app:enterAnim="@android:anim/slide_in_left"
@@ -45,5 +38,13 @@
     android:id="@+id/detailCountryScreenFragment"
     android:name="com.farhanhp.countriesdb.screens.detail_country.DetailCountryScreenFragment"
     android:label="Detail Country"
-    tools:layout="@layout/fragment_detail_country_screen" />
+    tools:layout="@layout/fragment_detail_country_screen" >
+    <deepLink
+      app:uri="farhanhp.com/countriesdb/{countryId}"/>
+
+    <argument
+        android:name="countryId"
+        app:argType="integer"
+        android:defaultValue="-1" />
+  </fragment>
 </navigation>

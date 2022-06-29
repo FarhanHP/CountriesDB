@@ -1,14 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   tools:context=".screens.detail_country.DetailCountryScreenFragment">
-
-  <!-- TODO: Update blank fragment layout -->
-  <TextView
+  <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:text="@string/hello_blank_fragment" />
+    android:layout_height="match_parent">
+    <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+      <ImageView
+        android:layout_marginTop="120dp"
+        android:id="@+id/map_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
-</FrameLayout>
+      <LinearLayout
+        android:layout_marginHorizontal="@dimen/space1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <LinearLayout
+          android:gravity="center"
+          android:layout_weight="1"
+          android:layout_width="0dp"
+          android:layout_height="match_parent">
+          <com.google.android.material.card.MaterialCardView
+            android:layout_margin="@dimen/space2"
+            app:cardElevation="@dimen/space2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+              android:id="@+id/flag_img"
+              android:layout_width="150dp"
+              android:layout_height="wrap_content"/>
+          </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <ImageView
+          android:layout_weight="1"
+          android:id="@+id/coat_of_arm_img"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"/>
+      </LinearLayout>
+
+      <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="450dp"
+        android:background="#aaffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/space2"
+        android:paddingTop="@dimen/space2"
+        android:paddingBottom="@dimen/space4">
+        <LinearLayout
+          android:gravity="center_vertical"
+          android:orientation="horizontal"
+          android:layout_width="match_parent"
+          android:layout_height="70dp">
+          <com.google.android.material.button.MaterialButton
+            app:icon="@drawable/ic_baseline_favorite_border_24"
+            app:iconTint="@color/blue"
+            android:backgroundTint="@color/white"
+            android:layout_weight="1"
+            android:id="@+id/favorite_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+
+          <Space
+            android:layout_width="@dimen/space2"
+            android:layout_height="wrap_content"/>
+
+          <com.google.android.material.button.MaterialButton
+            app:iconTint="@color/white"
+            app:icon="@drawable/ic_baseline_share_24"
+            android:text="@string/share_country"
+            android:layout_weight="1"
+            android:id="@+id/share_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <TextView
+          android:layout_marginTop="@dimen/space2"
+          android:textColor="@color/black"
+          android:id="@+id/country_description"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
+      </LinearLayout>
+    </FrameLayout>
+  </ScrollView>
+</layout>

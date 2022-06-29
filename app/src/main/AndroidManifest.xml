@@ -18,11 +18,18 @@
     <activity
       android:name=".MainActivity"
       android:exported="true">
-      <intent-filter>
+      <intent-filter android:autoVerify="true">
         <action android:name="android.intent.action.MAIN" />
 
         <category android:name="android.intent.category.LAUNCHER" />
+
+        <data android:scheme="http" />
+        <data android:scheme="https" />
+
+        <data android:host="farhanhp.com" />
       </intent-filter>
+
+      <nav-graph android:value="@navigation/main_nav_graph" />
     </activity>
     <meta-data
       android:name="preloaded_fonts"

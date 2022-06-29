@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/layout/fragment_main_screen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_splash_screen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_country_card.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/view_favorite_button.xml" value="0.340625" />
         <entry key="app/src/main/res/layout/view_holder_country.xml" value="0.17239583333333333" />
         <entry key="app/src/main/res/menu/main_toolbar_menu.xml" value="0.17395833333333333" />
       </map>

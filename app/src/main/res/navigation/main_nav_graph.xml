@@ -46,5 +46,8 @@
         android:name="countryId"
         app:argType="integer"
         android:defaultValue="-1" />
+    <action
+      android:id="@+id/action_detailCountryScreenFragment_to_mainScreenFragment"
+      app:destination="@id/mainScreenFragment" />
   </fragment>
 </navigation>

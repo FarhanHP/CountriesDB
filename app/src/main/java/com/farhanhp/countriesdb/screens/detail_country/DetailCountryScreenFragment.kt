@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.farhanhp.countriesdb.data.Country
@@ -34,7 +35,7 @@ class DetailCountryScreenFragment : MainActivityWithAboutFragment() {
       }
 
       if (country == null) {
-        parentActivity.onBackPressed()
+        findNavController().navigate(DetailCountryScreenFragmentDirections.actionDetailCountryScreenFragmentToMainScreenFragment())
       }
 
       country?.let { country ->
@@ -44,6 +45,7 @@ class DetailCountryScreenFragment : MainActivityWithAboutFragment() {
           load(country.mapImg).into(binding.mapImg)
         }
         binding.countryDescription.text = country.description
+        binding.favoriteButton.setCountry(country)
       }
     }
 

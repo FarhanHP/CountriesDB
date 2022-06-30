@@ -4,13 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="app/src/main/res/font/poppins_medium.xml" value="0.20520833333333333" />
+        <entry key="app/src/main/res/font/poppins_thin.xml" value="0.20520833333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_about_screen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_detail_country_screen.xml" value="0.3416666666666667" />
         <entry key="app/src/main/res/layout/fragment_main_screen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_splash_screen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_country_card.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/view_favorite_button.xml" value="0.340625" />
         <entry key="app/src/main/res/layout/view_holder_country.xml" value="0.17239583333333333" />
         <entry key="app/src/main/res/menu/main_toolbar_menu.xml" value="0.17395833333333333" />
       </map>

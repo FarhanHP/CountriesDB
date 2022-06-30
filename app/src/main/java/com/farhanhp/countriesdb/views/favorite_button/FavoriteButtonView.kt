@@ -1,9 +1,12 @@
 package com.farhanhp.countriesdb.views.favorite_button
 
 import android.content.Context
+import android.graphics.Typeface
 import android.util.AttributeSet
 import android.view.Gravity
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.TypefaceCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
@@ -25,6 +28,7 @@ class FavoriteButtonView @JvmOverloads constructor(
     viewModel.loading.observe(this, this::onLoadingChange)
     cornerRadius = 20.dp
     gravity = Gravity.CENTER_VERTICAL
+    typeface = ResourcesCompat.getFont(context, R.font.poppins_medium)
   }
 
   fun setCountry(country: Country) {
@@ -34,6 +38,8 @@ class FavoriteButtonView @JvmOverloads constructor(
   private fun onLoadingChange(isLoading: Boolean) {
     if(isLoading) {
       isEnabled = false
+      isClickable = false
+      isFocusable = false
       text = context.getString(R.string.loading)
       setTextColor(context.getColor(R.color.black))
     } else {

@@ -6,7 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.farhanhp.countriesdb.data.AppDatabaseProvider
 import com.farhanhp.countriesdb.data.Country
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class FavoriteButtonViewModel(
   private val appDatabaseProvider: AppDatabaseProvider
@@ -24,8 +29,10 @@ class FavoriteButtonViewModel(
   fun setCountry(country: Country) =
     viewModelScope.launch {
       _isLoading.value = true
-      this@FavoriteButtonViewModel.country = country
-      //isFavorite = appDatabaseProvider.db.countryDao().findFavoriteCountryById(country.id) != null
-      _isLoading.value = false
+      launch(Dispatchers.Default) {
+        this@FavoriteButtonViewModel.country = country
+        delay(5000)
+        isFavorite = appDatabaseProvider.db.countryDao().findFavoriteCountryById(country.id) != null
+      }
     }
 }

@@ -24,7 +24,11 @@ class DetailCountryScreenFragment : MainActivityWithAboutFragment() {
     savedInstanceState: Bundle?
   ): View {
     binding = FragmentDetailCountryScreenBinding.inflate(layoutInflater)
+    return binding.root
+  }
 
+  override fun onStart() {
+    super.onStart()
     viewModel.run {
       if(args.countryId > -1) {
         countryId = args.countryId
@@ -45,13 +49,10 @@ class DetailCountryScreenFragment : MainActivityWithAboutFragment() {
           load(country.mapImg).into(binding.mapImg)
         }
         binding.countryDescription.text = country.description
-        binding.favoriteButton.setCountry(country)
+        binding.favoriteButton.setParams(country)
       }
     }
-
-    binding.shareButton.setOnClickListener(this::onShareButtonClickListener)
-
-    return binding.root
+    binding.shareButton.setOnClickListener(::onShareButtonClickListener)
   }
 
   private fun onShareButtonClickListener(view: View) {

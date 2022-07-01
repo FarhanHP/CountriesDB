@@ -20,16 +20,11 @@ class MainScreenFragment : MainActivityWithAboutFragment() {
   ): View {
     binding = FragmentMainScreenBinding.inflate(layoutInflater)
     binding.countriesRv.adapter = CountriesAdapter(
-      viewModel.countries.map { CountriesAdapterItem(it, false) },
-      this::onFavoriteButtonClick,
-      this::onAdapterItemClick
+      viewModel.countries,
+      ::onAdapterItemClick
     )
 
     return binding.root
-  }
-
-  private fun onFavoriteButtonClick(countryId: Int) {
-
   }
 
   private fun onAdapterItemClick(country: Country) {

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.bumptech.glide.Glide
 import com.farhanhp.countriesdb.R
+import com.farhanhp.countriesdb.data.Country
 import com.farhanhp.countriesdb.databinding.ViewCountryCardBinding
 
 class CountryCardView @JvmOverloads constructor(
@@ -23,32 +24,9 @@ class CountryCardView @JvmOverloads constructor(
     binding.card.setOnClickListener(l)
   }
 
-  fun setImageUrl(imageUrl: String) {
-    Glide.with(this).load(imageUrl).centerCrop().into(binding.countryFlagImg)
-  }
-
-  fun setCountryName(countryName: String) {
-    binding.countryName.text = countryName
-  }
-
-  fun setFavoriteButton(isFavorite: Boolean) {
-    binding.favoriteButton.apply {
-      icon = context.getDrawable(
-        if(isFavorite)
-          R.drawable.ic_baseline_favorite_24
-        else
-          R.drawable.ic_baseline_favorite_border_24
-      )
-      text = context.getString(
-        if (isFavorite)
-          R.string.remove_favorite
-        else
-          R.string.add_favorite
-      )
-    }
-  }
-
-  fun setFavoriteButtonOnClickListener(listener: OnClickListener) {
-    binding.favoriteButton.setOnClickListener(listener)
+  fun setCountry(country: Country) {
+    Glide.with(this).load(country.flagImg).centerCrop().into(binding.countryFlagImg)
+    binding.countryName.text = country.name
+    binding.favoriteButton.setParams(country)
   }
 }

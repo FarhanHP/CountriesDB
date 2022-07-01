@@ -35,14 +35,9 @@
           android:layout_weight="1"
           android:layout_height="0dp"/>
 
-        <com.google.android.material.button.MaterialButton
-          android:textColor="@color/black"
-          android:backgroundTint="@color/white"
-          android:layout_marginHorizontal="@dimen/space1"
-          app:cornerRadius="@dimen/space2"
-          app:iconTint="@color/dark_blue"
-          app:icon="@drawable/ic_baseline_favorite_24"
-          tools:text="@string/add_favorite"
+        <com.farhanhp.countriesdb.views.favorite_button.FavoriteButtonView
+          android:paddingVertical="@dimen/space2"
+          android:layout_margin="@dimen/space1"
           android:id="@+id/favorite_button"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"/>

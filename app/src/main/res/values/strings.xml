@@ -9,4 +9,6 @@
   <string name="farhan_herdia123_gmail_com">farhan.herdia123@gmail.com</string>
   <string name="share_country">Share Country</string>
   <string name="loading">Loading…</string>
+  <string name="add_favorite_toast_msg">Added to favorite</string>
+  <string name="delete_favorite_toast_msg">Deleted from favorite</string>
 </resources>

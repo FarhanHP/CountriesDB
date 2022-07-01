@@ -6,18 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.farhanhp.countriesdb.data.AppDatabaseProvider
 import com.farhanhp.countriesdb.data.Country
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
-class FavoriteButtonViewModel(
-  private val appDatabaseProvider: AppDatabaseProvider
-): ViewModel() {
+class FavoriteButtonViewModel: ViewModel() {
   lateinit var country: Country
     private set
+
+  lateinit var appDatabaseProvider: AppDatabaseProvider
 
   var isFavorite = false
     private set
@@ -26,13 +21,33 @@ class FavoriteButtonViewModel(
   val loading: LiveData<Boolean>
     get() = _isLoading
 
-  fun setCountry(country: Country) =
+  fun setParams(country: Country, appDatabaseProvider: AppDatabaseProvider) {
+    this.appDatabaseProvider = appDatabaseProvider
+    this.country = country
+    updateIsFavorite()
+  }
+
+  fun updateIsFavorite() {
     viewModelScope.launch {
       _isLoading.value = true
-      launch(Dispatchers.Default) {
-        this@FavoriteButtonViewModel.country = country
-        delay(5000)
-        isFavorite = appDatabaseProvider.db.countryDao().findFavoriteCountryById(country.id) != null
+      withContext(Dispatchers.Default) {
+        isFavorite = appDatabaseProvider.isFavoriteCountry(country)
       }
+      _isLoading.value = false
+    }
+  }
+
+  fun onFavoriteButtonClickAsync() =
+    viewModelScope.async {
+      _isLoading.value = true
+      withContext(Dispatchers.Default) {
+        if (isFavorite) {
+          appDatabaseProvider.deleteFavoriteCountry(country)
+        } else {
+          appDatabaseProvider.addFavoriteCountry(country)
+        }
+      }
+      isFavorite = !isFavorite
+      _isLoading.value = false
     }
 }

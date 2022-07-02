@@ -1,7 +1,9 @@
 package com.farhanhp.countriesdb
 
+import android.os.Build.VERSION.SDK_INT
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.NavHostFragment
@@ -22,11 +24,15 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     binding = ActivityMainBinding.inflate(layoutInflater)
-    setContentView(binding.root)
 
     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
     val navController = (supportFragmentManager.findFragmentById(R.id.main_nav_host) as NavHostFragment).navController
+
+    if(SDK_INT >= 31) {
+      navController.navigate(R.id.mainScreenFragment)
+    }
+
     binding.toolbar.apply {
       setupWithNavController(navController, AppBarConfiguration(
         topLevelDestinationIds = setOf(R.id.mainScreenFragment),
@@ -34,5 +40,7 @@ class MainActivity : AppCompatActivity() {
       ))
       inflateMenu(R.menu.main_toolbar_menu)
     }
+
+    setContentView(binding.root)
   }
 }

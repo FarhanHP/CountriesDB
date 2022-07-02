@@ -23,7 +23,7 @@ class SplashScreenFragment : MainActivityFragment() {
     val view = inflater.inflate(R.layout.fragment_splash_screen, container, false)
 
     lifecycleScope.launchWhenResumed {
-      delay(2000)
+      delay(1000)
       findNavController().navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToMainScreenFragment())
     }
 

@@ -1,4 +1,4 @@
-# CountryDB
+# CountriesDB
 Simple Android App for Dicoding Android Beginner Course Submission
 
 ## Features
